@@ -1,164 +1,165 @@
-# 📘 Ejercicio en Clase 3 – Modularización en Java
-## Curso: Programación 1
+### 📘 Ejercicio en Clase 3 – Modularización en Java
 
----
+##Estudiantes:
+#Edward Meyer Natareno García 
+#José Yair Hernández Valenzuela
 
-## 🎯 Objetivo
+### 1️⃣ Identificación de Tareas Repetitivas
 
-Aplicar los conceptos de:
 
-- Modularización mediante métodos.
-- Uso correcto de variables locales y globales.
-- Validación de entradas del usuario.
-- Manejo básico de excepciones.
-- Mejora de la organización y legibilidad del código.
+# ¿Qué partes del código pueden convertirse en métodos?
 
----
 
-## 📌 Instrucciones Generales
 
-- Trabajar en parejas (**Obligatorio**).
-- No utilizar IA para el análisis.
-- Se proporcionará un programa base en Java.
-- Analizarlo, mejorarlo y documentar el proceso en este archivo `README.md`.
+Las partes del código que pueden separarse en métodos son:
 
----
+Mostrar el menú.
 
-# 🧠 Parte 1 – Análisis del Programa Original
+Agregar un estudiante.
 
-En esta sección deben analizar el programa entregado.
+Mostrar estudiantes.
 
-## 1️⃣ Identificación de Tareas Repetitivas
+Calcular el promedio.
 
-Responder:
+Mostrar el estudiante con la calificación más alta.
 
-- ¿Qué partes del código pueden convertirse en métodos?
-- ¿Qué bloques de código se repiten?
-- ¿Qué responsabilidades pueden separarse?
 
-Ejemplos de posibles tareas:
 
-- Agregar estudiante.
-- Mostrar estudiantes.
-- Calcular promedio.
-- Mostrar estudiante con mayor calificación.
+#¿Qué bloques de código se repiten?
 
-Explicar por qué dividir estas tareas mejora el programa.
 
----
+El siguiente bloque se repite en más de una opción del programa:
 
-## 2️⃣ Variables Locales vs Globales
+if (calificaciones.isEmpty()) {
+    System.out.println("No hay calificaciones registradas.");
+}
 
-Responder:
 
-- ¿Qué variables deberían declararse como globales (atributos `static` de la clase)?
-- ¿Cuáles deberían ser locales dentro de un método?
-- ¿Por qué?
 
-Reflexionar sobre:
+#¿Qué responsabilidades pueden separarse?
 
-- Alcance (scope)
-- Tiempo de vida de la variable
-- Riesgos de modificar datos globales accidentalmente
 
----
+Las responsabilidades que pueden separarse son:
 
-# 🏗️ Parte 2 – Modularización del Programa
+Agregar estudiantes.
 
-Reestructurar el programa aplicando modularización:
+Mostrar la lista de estudiantes.
 
-- Crear métodos claros y específicos.
-- Cada método debe tener una sola responsabilidad.
-- Todos los métodos deben ser llamados desde `main`.
-- Mantener el programa completamente funcional.
+Calcular el promedio.
 
-No es obligatorio usar nombres específicos, pero deben ser descriptivos.
+Buscar la calificación más alta.
 
-Ejemplo de buenas prácticas:
+Separar estas tareas mejora el programa porque hace que el código sea más organizado
+,fácil de entender y más sencillo de mantener.
 
-- Un método = una responsabilidad.
-- No mezclar múltiples tareas en un mismo método.
-- Mantener el código ordenado e indentado.
 
----
+###2️⃣ Variables Locales vs Globales
 
-# 🔐 Parte 3 – Validaciones y Manejo de Excepciones
 
-Implementar mejoras en el programa:
+#¿Qué variables deben ser globales (static)?
 
-- Validar entradas numéricas.
-- Evitar que el programa falle si el usuario ingresa texto en lugar de números.
-- Verificar que las calificaciones estén en un rango válido.
-- Usar `try-catch` cuando sea necesario.
 
-Explicar en esta sección:
+Las variables que deben ser globales son:
 
-- Qué errores podrían ocurrir.
-- Qué validaciones implementaron.
-- Por qué son importantes.
 
----
+estudiantes
 
-# 🧩 Parte 4 – Preguntas de Reflexión
+calificaciones
 
-Responder con sus propias palabras.
+Estas se usan en varios métodos del programa.
 
-## 1️⃣ ¿Qué ventajas tiene dividir el código en métodos?
 
-Reflexionar sobre:
 
-- Organización
-- Reutilización
-- Mantenimiento
-- Claridad
+#¿Cuáles deben ser locales?
 
----
 
-## 2️⃣ ¿Por qué no es recomendable usar muchas variables globales?
+Las variables locales son aquellas que solo se utilizan dentro de un método, por ejemplo:
 
-Reflexionar sobre:
+promedio
 
-- Posibilidad de errores inesperados
-- Dificultad para depurar
-- Dependencia entre métodos
+suma
 
----
+nombre
 
-## 3️⃣ ¿Cómo mejora la modularización la legibilidad del código?
+opcion
 
----
 
-# 📦 Entregables
+#¿Por qué?
 
-## 1️⃣ Código Java
 
-- Archivo `Main.java`.
-- Modularizado correctamente.
-- Funcional.
-- Con validaciones básicas.
-- Ordenado y bien indentado.
+Porque estas variables almacenan datos temporales y solo son necesarias durante la ejecución de un método específico.
 
----
 
-## 2️⃣ Este archivo `README.md`
+#Alcance (scope)
 
-Debe contener:
+Las variables globales pueden utilizarse en todos los métodos de la clase, mientras que las variables locales solo pueden usarse dentro del método donde fueron declaradas.
 
-- Análisis del programa original.
-- Decisiones de modularización.
-- Justificación de variables locales y globales.
-- Respuestas a las preguntas guía.
-- Explicación de validaciones implementadas.
 
----
+#Tiempo de vida de la variable
 
-# 📊 Criterios de Evaluación
+Las variables globales existen durante toda la ejecución del programa.
+Las variables locales solo existen mientras se ejecuta el método donde fueron creadas.
 
-| Criterio | Puntos |
-|----------|--------|
-| Programa funciona correctamente | 30 |
-| Modularización adecuada | 25 |
-| Uso correcto de variables locales y globales | 15 |
-| Validaciones implementadas | 15 |
-| Calidad del README | 15 |
-| **Total** | **100 puntos** |
+
+#Riesgos de modificar datos globales accidentalmente
+
+Modificar variables globales puede afectar a todo el programa, ya que varios métodos dependen de ellas. Esto puede provocar errores difíciles de detectar.
+
+
+###🔐 Validaciones y Manejo de Excepciones
+
+#¿Qué errores podrían ocurrir?
+
+El programa podía fallar si el usuario ingresaba letras cuando se esperaba un número, por ejemplo al ingresar la opción del menú o la calificación del estudiante.
+
+
+#¿Qué validaciones se implementaron?
+
+Se implementaron las siguientes validaciones:
+
+Uso de try-catch para evitar que el programa se cierre si el usuario ingresa texto en lugar de números.
+
+Validación de las entradas del menú.
+
+
+#¿Por qué son importantes?
+
+
+Las validaciones son importantes porque evitan que el programa se detenga por errores del usuario, mejoran la confiabilidad del sistema y permiten una mejor experiencia al usuario.
+
+
+###🧩 Parte 4 – Preguntas de Reflexión
+
+##1️⃣ ¿Qué ventajas tiene dividir el código en métodos?
+
+Dividir el código en métodos ofrece varias ventajas:
+
+#Organización:
+ el programa está mejor estructurado y ordenado.
+
+#Reutilización: 
+los métodos pueden usarse varias veces sin repetir código.
+
+#Mantenimiento: 
+es más fácil corregir errores en una parte específica del programa.
+
+#Claridad: 
+cada método cumple una sola función, lo que facilita su comprensión.
+
+
+##2️⃣ ¿Por qué no es recomendable usar muchas variables globales?
+
+
+No es recomendable usar muchas variables globales porque:
+
+Errores inesperados: cualquier método puede modificar su valor sin control.
+
+Dificultad para depurar: es difícil saber qué método causó el problema.
+
+Dependencia entre métodos: los métodos se vuelven dependientes entre sí.
+
+
+##3️⃣ ¿Cómo mejora la modularización la legibilidad del código?
+
+La modularización mejora la legibilidad porque el programa se divide en partes pequeñas y claras.
+Cada método tiene un nombre que indica su función, lo que permite entender rápidamente qué hace cada parte del programa.
